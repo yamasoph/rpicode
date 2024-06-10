@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 """
 Power Calculations
 """
-#imports
+
 import numpy as np
 from scipy.integrate import quad
 import pandas as pd
@@ -61,22 +60,8 @@ def calculate_beam_waist(wavelength, divergence):
     beam_waist = (720 * wavelength) / (divergence * pi**2)
 
     return beam_waist
-#power 2
-#file_path = r"C:\Users\yamans\Downloads\F230-A_Divergence.xlsx"
-#power 1
-#file_path = r"C:\Users\yamans\Downloads\F110-532_Divergence.xlsx"
-#power 3
-#file_path = r"C:\Users\yamans\Downloads\F671-405_Divergence (1).xlsx"
-#power 4
-file_path = r"C:\Users\yamans\Downloads\F220-532_Divergence.xlsx"
-#power 5
-#file_path = r"C:\Users\yamans\Downloads\F280-A_Divergence.xlsx"
-#power 6
-#file_path = r"C:\Users\yamans\Downloads\F220-850_Divergence.xlsx"
-#power 7
-#file_path = r"C:\Users\yamans\Downloads\F110-633_Divergence.xlsx"
-#power 8
-#file_path = r"C:\Users\yamans\Downloads\F240-532_Divergence.xlsx"
+
+file_path = r""
 
 cleaned_data = load_and_clean_data(file_path)
 new_wavelengths = [532]
@@ -91,8 +76,6 @@ R = 0.25e-3  # radius in meters of the specular image/laser (We can choose this 
 d_f = 0.011 # diameter in meters of the fiber
 z = 7.933256561   #distance in meters from source to fibers(We can change this)
 
-
-#FOV in radians = 6.302581999999999e-05 rad
 def power_calc(w0, wavelength, z, R, P0=.001, d_f=0.011):
     """
     Calculate power collected at the fiber.
@@ -140,10 +123,8 @@ def power_calc(w0, wavelength, z, R, P0=.001, d_f=0.011):
 
 final_power = power_calc(beam_waist, wavelength, z, R)
 
-#print(cleaned_data)
 print("The interpolated divergence is", interpolated_divergences)
 print("Beam waist is", beam_waist, "meters")
-#print("Power collected is", final_power, "watts")
 
 def power_collected_collimated(w0, wavelength, z, R, P0):
     """
